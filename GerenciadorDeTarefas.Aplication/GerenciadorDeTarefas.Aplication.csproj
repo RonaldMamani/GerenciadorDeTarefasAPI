@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Register\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GerenciadorDeTarefas.Communication\GerenciadorDeTarefas.Communication.csproj" />
   </ItemGroup>
 
