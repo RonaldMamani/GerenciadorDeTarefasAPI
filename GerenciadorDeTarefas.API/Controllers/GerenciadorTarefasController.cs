@@ -1,4 +1,5 @@
-﻿using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Register;
+﻿using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Delete;
+using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Register;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Update;
 using GerenciadorDeTarefas.Communication.Requests;
 using GerenciadorDeTarefas.Communication.Responses;
@@ -26,6 +27,17 @@ public class GerenciadorTarefasController : ControllerBase
     {
         var useCase = new UpdateTarefaUseCase();
         useCase.Execute(id, request);
+
+        return NoContent();
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult DeleteTarefa([FromRoute] int id) 
+    {
+        var useCase = new DeleteTarefaByToIdUseCase();
+        useCase.Execute(id);
 
         return NoContent();
     }
