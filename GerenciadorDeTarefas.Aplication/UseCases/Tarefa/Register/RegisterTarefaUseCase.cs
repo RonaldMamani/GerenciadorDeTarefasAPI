@@ -1,7 +1,7 @@
 ﻿using GerenciadorDeTarefas.Communication.Requests;
 using GerenciadorDeTarefas.Communication.Responses;
 
-namespace GerenciadorDeTarefas.Aplication.UseCases.Register;
+namespace GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Register;
 
 public class RegisterTarefaUseCase
 {
