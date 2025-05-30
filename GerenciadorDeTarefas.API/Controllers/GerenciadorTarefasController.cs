@@ -1,5 +1,6 @@
 ﻿using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Delete;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.GetAll;
+using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.GetById;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Register;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Update;
 using GerenciadorDeTarefas.Communication.Requests;
@@ -49,6 +50,18 @@ public class GerenciadorTarefasController : ControllerBase
         }
 
         return NoContent();
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseType(typeof(ResponseTarefaJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public IActionResult Get(int id)
+    {
+        var useCase = new GetTarefaByIdUseCase();
+        var response = useCase.Execute(id);
+
+        return Ok(response);
     }
 
     // Deletar Tarefa
