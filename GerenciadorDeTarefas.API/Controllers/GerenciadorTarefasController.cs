@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Delete;
+using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.GetAll;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Register;
 using GerenciadorDeTarefas.Aplication.UseCases.Tarefa.Update;
 using GerenciadorDeTarefas.Communication.Requests;
@@ -10,6 +11,7 @@ namespace GerenciadorDeTarefas.API.Controllers;
 [ApiController]
 public class GerenciadorTarefasController : ControllerBase
 {
+    // Criar Tarefas
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisterTarefaJson), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
@@ -19,6 +21,7 @@ public class GerenciadorTarefasController : ControllerBase
         return Created(string.Empty, response);
     }
 
+    // Editar Tarefa
     [HttpPut]
     [Route("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -31,6 +34,24 @@ public class GerenciadorTarefasController : ControllerBase
         return NoContent();
     }
 
+    // Visualizar Todas as Tarefas
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseAllTarefasJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult GetAllTarefas() 
+    {
+        var useCase = new GetAllTarefasUseCase();
+        var response = useCase.Execute();
+        
+        if (response.Tarefas.Any())
+        {
+            return Ok(response);
+        }
+
+        return NoContent();
+    }
+
+    // Deletar Tarefa
     [HttpDelete]
     [Route("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

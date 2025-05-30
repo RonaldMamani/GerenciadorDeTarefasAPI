@@ -11,7 +11,7 @@ public class RegisterTarefaUseCase
         {
             Id = request.Id,
             Nome = request.Nome,
-            Descrisao = request.Descrisao,
+            Descricao = request.Descricao,
             Prioridade = request.Prioridade,
             DataLimite = request.DataLimite
         };

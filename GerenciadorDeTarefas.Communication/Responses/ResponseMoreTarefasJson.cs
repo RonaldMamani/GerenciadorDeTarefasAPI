@@ -1,8 +1,8 @@
 ﻿using GerenciadorDeTarefas.Communication.Emums;
 
-namespace GerenciadorDeTarefas.Communication.Requests;
+namespace GerenciadorDeTarefas.Communication.Responses;
 
-public class RequestTarefasJson
+public class ResponseMoreTarefasJson
 {
     public int Id { get; set; }
     public string Nome { get; set; } = string.Empty;
@@ -10,6 +10,5 @@ public class RequestTarefasJson
     public Prioridade Prioridade { get; set; }
     public DateTime DataLimite { get; set; }
     public Status Status { get; set; }
-
 }
 
